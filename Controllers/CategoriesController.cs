@@ -7,6 +7,7 @@ using AutoMapper;
 using Supermarket.API.Domain.Services.Communication;
 using Supermarket.API.Resources;
 using Supermarket.API.Extensions;
+// random change
 
 namespace Supermarket.API.Controllers
 {
