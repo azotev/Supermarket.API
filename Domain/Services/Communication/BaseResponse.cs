@@ -2,8 +2,8 @@ namespace Supermarket.API.Domain.Services.Communication
 {
     public abstract class BaseResponse
     {
-        public bool Success { get; protected set; }
-        public string Message { get; protected set; }
+        public bool Success { get; init; }
+        public string Message { get; init; }
 
         public BaseResponse(bool success, string message)
         {
