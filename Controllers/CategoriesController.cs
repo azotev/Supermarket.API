@@ -7,7 +7,6 @@ using AutoMapper;
 using Supermarket.API.Domain.Services.Communication;
 using Supermarket.API.Resources;
 using Supermarket.API.Extensions;
-// random change
 
 namespace Supermarket.API.Controllers
 {
@@ -51,14 +50,14 @@ namespace Supermarket.API.Controllers
             return Ok(categoryResource);
         }
 
-        [HttpPut({"id"})]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
         
             var category = _mapper.Map<SaveCategoryResource, Category>(resource);
-            var result = await _categoryService.UpdateAsync(category);
+            var result = await _categoryService.UpdateAsync(id, category);
         
             if (!result.Success)
                 return NotFound(result.Message);

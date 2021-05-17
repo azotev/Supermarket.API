@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Domain.Repositories;
 using Supermarket.API.Domain.Services;
@@ -37,6 +38,31 @@ namespace Supermarket.API.Services
                 // Logging...
                 return new SaveCategoryResponse($"Error when saving category: {ex.Message}");
             }
+            
+        }
+
+        public async Task<SaveCategoryResponse> UpdateAsync(int id, Category category)
+        {
+            var existingCategory = await _categoryRepository.FindByIdAsync(id);
+
+            if (existingCategory == null)
+                return new SaveCategoryResponse("Category not found.");
+
+            existingCategory.Name = category.Name;
+
+            try
+            {
+                _categoryRepository.Update(existingCategory);
+                await _unitOfWork.CompleteAsync();
+
+                return new SaveCategoryResponse(existingCategory);
+            }
+            catch (Exception ex)
+            {
+                //Logging 
+                return new SaveCategoryResponse($"Error in category update: {ex.Message}");
+            }
+            
             
         }
     }
