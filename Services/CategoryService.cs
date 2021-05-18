@@ -24,6 +24,15 @@ namespace Supermarket.API.Services
             return await _categoryRepository.ListAsync();
         }
 
+        public async Task<CategoryResponse> GetAsync(int id)
+        {
+            var existingCategory = await _categoryRepository.FindByIdAsync(id);
+            if (existingCategory == null)
+                return new CategoryResponse("Category not found.");
+            
+            return new CategoryResponse(existingCategory);
+        }
+        
         public async Task<CategoryResponse> SaveAsync(Category category)
         {
             try

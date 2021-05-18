@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using Supermarket.API.Extensions;
 namespace Supermarket.API.Controllers
 {
     [Route("/api/[controller]")]
-    // [ApiController]
+    [ApiController]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
@@ -32,13 +33,35 @@ namespace Supermarket.API.Controllers
             
             return resources;
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CategoryResource>> GetCategoryAsync(int id)
+        {
+            // if (!ModelState.IsValid)
+            //     return BadRequest(ModelState.GetErrorMessages());
+
+            var result = await _categoryService.GetAsync(id);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+                // return NotFound();
+            
+            var categoryResource = _mapper.Map<Category, CategoryResource>(result.Category);
+            return Ok(categoryResource);
+            // return categoryResource;
+        }
+        
+
         
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
-            
+            // if (!ModelState.IsValid)
+            // {
+            //     Console.WriteLine("Bad model state\n");
+            //     return BadRequest(ModelState.GetErrorMessages());
+            // }
+                
             var category = _mapper.Map<SaveCategoryResource, Category>(resource);
             var result = await _categoryService.SaveAsync(category);
             
@@ -53,8 +76,8 @@ namespace Supermarket.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryResource resource)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
+            // if (!ModelState.IsValid)
+            //     return BadRequest(ModelState.GetErrorMessages());
         
             var category = _mapper.Map<SaveCategoryResource, Category>(resource);
             var result = await _categoryService.UpdateAsync(id, category);
