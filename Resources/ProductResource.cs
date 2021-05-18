@@ -1,13 +1,14 @@
-namespace Supermarket.API.Domain.Models
+using Supermarket.API.Domain.Models;
+
+namespace Supermarket.API.Resources
 {
-    public class Product
+    public class ProductResource
     {
         
         public int Id { get; set; }
         public string Name { get; set; }
         public short QuantityInPackage { get; set; }
-        public EUnitOfMeasurement UnitOfMeasurement { get; set; }
-        public int CategoryId { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public Category Category { get; set; }
     }
 }
