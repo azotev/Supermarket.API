@@ -28,7 +28,7 @@ namespace Supermarket.API.Services
         {
             var existingCategory = await _categoryRepository.FindByIdAsync(id);
             if (existingCategory == null)
-                return new CategoryResponse("Category not found.");
+                return new CategoryResponse($"Category {id} not found.");
             
             return new CategoryResponse(existingCategory);
         }

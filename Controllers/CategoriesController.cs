@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Domain.Services;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.EventSource;
 using Supermarket.API.Domain.Services.Communication;
 using Supermarket.API.Resources;
 using Supermarket.API.Extensions;
@@ -17,16 +19,20 @@ namespace Supermarket.API.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
-
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        private readonly ILogger _logger;
+        
+        public CategoriesController(ICategoryService categoryService, IMapper mapper, 
+                                        ILogger<CategoriesController> logger)
         {
             _categoryService = categoryService;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
+            _logger.LogInformation("Getting all categories");
             var categories = await _categoryService.ListAsync();
             var resources = 
                 _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
@@ -39,13 +45,16 @@ namespace Supermarket.API.Controllers
         {
             // if (!ModelState.IsValid)
             //     return BadRequest(ModelState.GetErrorMessages());
+            _logger.LogInformation("Getting category {Id}", id);
 
             var result = await _categoryService.GetAsync(id);
 
             if (!result.Success)
-                return BadRequest(result.Message);
-                // return NotFound();
-            
+            {
+                _logger.LogWarning("Category {Id} not found", id);
+                return NotFound(result.Message);
+            }
+
             var categoryResource = _mapper.Map<Category, CategoryResource>(result.Category);
             return Ok(categoryResource);
             // return categoryResource;

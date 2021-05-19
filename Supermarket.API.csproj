@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
@@ -10,11 +11,158 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Domain\Services\IProductService.cs" />
+    <Compile Include="..\supermarketApiTests\CategoriesControllerTests.cs">
+      <Link>supermarketApiTests\CategoriesControllerTests.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\supermarketApiTests\.git\config">
+      <Link>supermarketApiTests\.git\config</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\description">
+      <Link>supermarketApiTests\.git\description</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\HEAD">
+      <Link>supermarketApiTests\.git\HEAD</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\applypatch-msg.sample">
+      <Link>supermarketApiTests\.git\hooks\applypatch-msg.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\commit-msg.sample">
+      <Link>supermarketApiTests\.git\hooks\commit-msg.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\fsmonitor-watchman.sample">
+      <Link>supermarketApiTests\.git\hooks\fsmonitor-watchman.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\post-update.sample">
+      <Link>supermarketApiTests\.git\hooks\post-update.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-applypatch.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-applypatch.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-commit.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-commit.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-merge-commit.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-merge-commit.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-push.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-push.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-rebase.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-rebase.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\pre-receive.sample">
+      <Link>supermarketApiTests\.git\hooks\pre-receive.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\prepare-commit-msg.sample">
+      <Link>supermarketApiTests\.git\hooks\prepare-commit-msg.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\hooks\update.sample">
+      <Link>supermarketApiTests\.git\hooks\update.sample</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\index">
+      <Link>supermarketApiTests\.git\index</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\info\exclude">
+      <Link>supermarketApiTests\.git\info\exclude</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\logs\HEAD">
+      <Link>supermarketApiTests\.git\logs\HEAD</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\logs\refs\heads\master">
+      <Link>supermarketApiTests\.git\logs\refs\heads\master</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\logs\refs\remotes\origin\HEAD">
+      <Link>supermarketApiTests\.git\logs\refs\remotes\origin\HEAD</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\03\050cd43364d51c7ba6dd961db13f201b1aae3a">
+      <Link>supermarketApiTests\.git\objects\03\050cd43364d51c7ba6dd961db13f201b1aae3a</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\11\c4f443c16c4fbc440221c5a30baa7ed9488955">
+      <Link>supermarketApiTests\.git\objects\11\c4f443c16c4fbc440221c5a30baa7ed9488955</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\27\ba142e96c1562236dc4e931542b17a8ad67a7e">
+      <Link>supermarketApiTests\.git\objects\27\ba142e96c1562236dc4e931542b17a8ad67a7e</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\29\363befef90cbdef423fc906c73f4d912f77fc7">
+      <Link>supermarketApiTests\.git\objects\29\363befef90cbdef423fc906c73f4d912f77fc7</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\5f\affccbc8e7f4fe3c84f9b6091098527428aae5">
+      <Link>supermarketApiTests\.git\objects\5f\affccbc8e7f4fe3c84f9b6091098527428aae5</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\64\76b8139ce99128c0ade6ca5967d6e8f9cd36f8">
+      <Link>supermarketApiTests\.git\objects\64\76b8139ce99128c0ade6ca5967d6e8f9cd36f8</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\71\d3616bd5f18539c5cab95a3143296e00548fe3">
+      <Link>supermarketApiTests\.git\objects\71\d3616bd5f18539c5cab95a3143296e00548fe3</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\8f\45f157f063dc382d99fcde16ec0f060ea9a529">
+      <Link>supermarketApiTests\.git\objects\8f\45f157f063dc382d99fcde16ec0f060ea9a529</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\94\a25f7f4cb416c083d265558da75d457237d671">
+      <Link>supermarketApiTests\.git\objects\94\a25f7f4cb416c083d265558da75d457237d671</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\9e\765d34af8d417a64b9feca10c266f6f2c1b266">
+      <Link>supermarketApiTests\.git\objects\9e\765d34af8d417a64b9feca10c266f6f2c1b266</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\df\87cf951fb4858ab7a76b68dd479c98b2df2404">
+      <Link>supermarketApiTests\.git\objects\df\87cf951fb4858ab7a76b68dd479c98b2df2404</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\objects\f7\b78e3515587846c0925de68c99af68745c3927">
+      <Link>supermarketApiTests\.git\objects\f7\b78e3515587846c0925de68c99af68745c3927</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\packed-refs">
+      <Link>supermarketApiTests\.git\packed-refs</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\refs\heads\master">
+      <Link>supermarketApiTests\.git\refs\heads\master</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.git\refs\remotes\origin\HEAD">
+      <Link>supermarketApiTests\.git\refs\remotes\origin\HEAD</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\encodings.xml">
+      <Link>supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\encodings.xml</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\indexLayout.xml">
+      <Link>supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\indexLayout.xml</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\riderModule.iml">
+      <Link>supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\riderModule.iml</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\vcs.xml">
+      <Link>supermarketApiTests\.idea\.idea.SupermarketApiTests\.idea\vcs.xml</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\SupermarketApiTests.csproj">
+      <Link>supermarketApiTests\SupermarketApiTests.csproj</Link>
+    </Content>
+    <Content Include="..\supermarketApiTests\SupermarketApiTests.sln">
+      <Link>supermarketApiTests\SupermarketApiTests.sln</Link>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="..\supermarketApiTests\.git\branches">
+      <Link>supermarketApiTests\.git\branches</Link>
+    </Folder>
+    <Folder Include="..\supermarketApiTests\.git\objects\info">
+      <Link>supermarketApiTests\.git\objects\info</Link>
+    </Folder>
+    <Folder Include="..\supermarketApiTests\.git\objects\pack">
+      <Link>supermarketApiTests\.git\objects\pack</Link>
+    </Folder>
+    <Folder Include="..\supermarketApiTests\.git\refs\tags">
+      <Link>supermarketApiTests\.git\refs\tags</Link>
+    </Folder>
   </ItemGroup>
 
 </Project>
