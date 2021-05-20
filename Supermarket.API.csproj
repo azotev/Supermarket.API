@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Domain\Services\IProductService.cs" />
     <Compile Include="..\supermarketApiTests\CategoriesControllerTests.cs">
       <Link>supermarketApiTests\CategoriesControllerTests.cs</Link>
     </Compile>
