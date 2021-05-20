@@ -18,6 +18,6 @@ namespace Supermarket.API.Resources
         public string UnitOfMeasurement { get; set; }
 
         [Required]
-        public Category Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }
