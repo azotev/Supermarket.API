@@ -34,10 +34,11 @@ namespace Supermarket.API.Controllers
         {
             _logger.LogInformation("Getting all categories");
             var categories = await _categoryService.ListAsync();
-            var resources = 
+            var resources =
                 _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
-            
+
             return resources;
+            // return categories;
         }
 
         [HttpGet("{id}")]
@@ -93,7 +94,7 @@ namespace Supermarket.API.Controllers
         
             if (!result.Success)
                 return NotFound(result.Message);
-        
+
             var categoryResource = _mapper.Map<Category, CategoryResource>(result.Category);
             return Ok(categoryResource);
         }

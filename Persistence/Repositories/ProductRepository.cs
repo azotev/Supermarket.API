@@ -18,7 +18,7 @@ namespace Supermarket.API.Persistence.Repositories
         {
             return await _context.Products.Include(p => p.Category)
                                                     .ToListAsync();
-            
+
         }
 
         public async Task<Product> FindByIdAsync(int id)
