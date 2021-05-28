@@ -20,7 +20,7 @@ namespace Supermarket.API
             var host = BuildWebHost(args);
 
             using(var scope = host.Services.CreateScope())
-            using(var context = scope.ServiceProvider.GetService<AppDbContext>())
+            using(var context = scope.ServiceProvider.GetService<sql_storeContext>())
             {
                 context!.Database.EnsureCreated();
             }

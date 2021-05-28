@@ -5,12 +5,14 @@ using System.Collections.Generic;
 
 namespace Supermarket.API.Domain.Models
 {
-    public class Product
+    public class OrderItem
     {
+        public int OrderId { get; set; }
         public int ProductId { get; set; }
-        public string Name { get; set; }
-        public int QuantityInStock { get; set; }
+        public int Quantity { get; set; }
         public decimal UnitPrice { get; set; }
-        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

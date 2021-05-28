@@ -10,21 +10,21 @@ namespace Supermarket.API.Persistence.Repositories
 {
     public class ProductRepository : BaseRepository, IProductRepository
     {
-        public ProductRepository(AppDbContext context) : base(context)
+        public ProductRepository(sql_storeContext context) : base(context)
         {
         }
 
         public async Task<IEnumerable<Product>> ListAsync()
         {
-            return await _context.Products.Include(p => p.Category)
-                                                    .ToListAsync();
+            return await _context.Products.Include(p => p.OrderItems)
+                .ToListAsync();
 
         }
 
         public async Task<Product> FindByIdAsync(int id)
         {
-            return await _context.Products.Include(p => p.Category)
-                .FirstAsync(p => p.Id == id);
+            return await _context.Products.Include(p => p.OrderItems)
+                .FirstAsync(p => p.ProductId == id);
 
         }
 
@@ -42,7 +42,5 @@ namespace Supermarket.API.Persistence.Repositories
         {
             _context.Products.Remove(product);
         }
-
-
     }
 }

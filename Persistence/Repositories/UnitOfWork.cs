@@ -6,9 +6,9 @@ namespace Supermarket.API.Persistence.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _context;
+        private readonly sql_storeContext _context;
 
-        public UnitOfWork(AppDbContext context)
+        public UnitOfWork(sql_storeContext context)
         {
             _context = context;     
         }

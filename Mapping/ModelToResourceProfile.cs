@@ -10,15 +10,11 @@ namespace Supermarket.API.Mapping
     {
         public ModelToResourceProfile()
         {
-            CreateMap<Category, CategoryResource>()
-                .ForMember(dest => dest.ProductNames,
-                    opt => opt.MapFrom
-                        (src => src.Products.Select(p => p.Name)));
-
             CreateMap<Product, ProductResource>()
-                .ForMember(src => src.UnitOfMeasurement,
+                .ForMember(dest => dest.OrderId,
                     opt => opt.MapFrom
-                        (src => src.UnitOfMeasurement.ToDescriptionString()));
+                        (src => src.OrderItems.Select(o => o.OrderId)));
+
         }
     }
 }

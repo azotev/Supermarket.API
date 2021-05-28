@@ -9,14 +9,7 @@ namespace Supermarket.API.Mapping
     {
         public ResourceToModelProfile()
         {
-            CreateMap<SaveCategoryResource, Category>();
-            CreateMap<SaveProductResource, Product>()
-                .ForMember(src => src.UnitOfMeasurement,
-                    opt => opt.MapFrom
-                    (src =>
-                        (EUnitOfMeasurement) Enum.Parse(typeof(EUnitOfMeasurement),
-                            src.UnitOfMeasurement)));
-
+            CreateMap<SaveProductResource, Product>();
         }
     }
 }

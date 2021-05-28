@@ -57,9 +57,9 @@ namespace Supermarket.API.Services
                 return new ProductResponse($"Product {id} not found.");
 
             existingProduct.Name = product.Name;
-            existingProduct.QuantityInPackage = product.QuantityInPackage;
-            existingProduct.UnitOfMeasurement = product.UnitOfMeasurement;
-            existingProduct.Category = product.Category;
+            existingProduct.QuantityInStock = product.QuantityInStock;
+            existingProduct.UnitPrice = product.UnitPrice;
+            existingProduct.OrderItems = product.OrderItems;
 
             try
             {

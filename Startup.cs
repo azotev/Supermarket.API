@@ -13,6 +13,7 @@ using Supermarket.API.Persistence.Contexts;
 using Supermarket.API.Persistence.Repositories;
 using Supermarket.API.Services;
 
+
 namespace Supermarket.API
 {
     public class Startup
@@ -27,15 +28,11 @@ namespace Supermarket.API
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseInMemoryDatabase("supermarket-api-in-memory"));
+
+            services.AddDbContext<sql_storeContext>(options =>
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
-            
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            
-            services.AddScoped<ICategoryService, CategoryService>();
             
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
