@@ -44,6 +44,8 @@
     <Compile Remove="Domain\Models\Category.cs" />
     <Compile Remove="Persistence\Repositories\CategoryRepository.cs" />
     <Compile Remove="Persistence\Contexts\AppDbContext.cs" />
+    <Compile Remove="Resources\CategoryResource.cs" />
+    <Compile Remove="Resources\SaveCategoryResource.cs" />
   </ItemGroup>
 
   <ItemGroup>
