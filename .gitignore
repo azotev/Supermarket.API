@@ -1,3 +1,10 @@
 obj/
 bin/
 *.DotSettings.user
+Controllers/CategoriesController.cs
+Domain/Models/Category.cs
+Domain/Models/Services/Communication/CategoryResponse.cs
+Persistence/Contexts/AppDbContext.cs
+Persistence/Repositories/CategoryRepository.cs
+Resources/CategoryResource.cs
+
