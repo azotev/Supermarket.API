@@ -10,14 +10,9 @@ namespace Supermarket.API.Resources
         public string Name { get; set; }
 
         [Required]
-        [Range(0, 100)]
-        public short QuantityInPackage { get; set; }
+        public int QuantityInStock { get; set; }
 
         [Required]
-        [Range(1, 5)]
-        public string UnitOfMeasurement { get; set; }
-
-        [Required]
-        public int CategoryId { get; set; }
+        public decimal UnitPrice { get; set; }
     }
 }

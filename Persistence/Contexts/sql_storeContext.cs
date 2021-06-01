@@ -35,7 +35,7 @@ namespace Supermarket.API.Persistence.Contexts
             // by using the Name= syntax to read it from configuration
             // - see https://go.microsoft.com/fwlink/?linkid=2131148.
             // For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=Saruman1;database=sql_store");
+                optionsBuilder.UseMySQL("DefaultConnection");
             }
         }
 

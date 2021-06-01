@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 using Supermarket.API.Domain.Repositories;
 using Supermarket.API.Domain.Services;
 using Supermarket.API.Domain.Services.Communication;
@@ -29,8 +30,13 @@ namespace Supermarket.API
         {
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
+            var builder = new MySqlConnectionStringBuilder(
+                Configuration.GetConnectionString("DefaultConnection"));
+
+            builder.Password = Configuration["RootPassword"];
+
             services.AddDbContext<sql_storeContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySQL(builder.ConnectionString));
 
             services.AddControllers();
             
