@@ -7,4 +7,11 @@ Domain/Models/Services/Communication/CategoryResponse.cs
 Persistence/Contexts/AppDbContext.cs
 Persistence/Repositories/CategoryRepository.cs
 Resources/CategoryResource.cs
-
+Domain/Models/EUnitOfMeasurement.cs
+Domain/Models/Product_temp.cs
+Domain/Repositories/ICategoryRepository.cs
+Domain/Services/Communication/CategoryResponse.cs
+Domain/Services/ICategoryService.cs
+Extensions/EnumExtensions.cs
+Resources/SaveCategoryResource.cs
+Services/CategoryService.cs
